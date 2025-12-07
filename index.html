@@ -9,142 +9,151 @@
 </head>
 
 <body>
-    <div>
-        <div>
-            <div>
-                <div>
-                    <div>
-                        <div>
-                            <img src="img/bancom_logo_black_letter.png" alt="200px" srcset="">
-                        </div>
-                        <div>CAJERO AUTOMATICO</div>
+    <div class="atm-machine">
+        <img src="img/bancom_logo_black_letter.png" alt="Logo Bancom" width="100px">
+        <div class="screen-bezel">
+            <div class="screen">
+                <div class="screen-content">
+                    <div class="bank-header">
+                        <div class="bank-logo">Bancom</div>
+                        <div class="bank-subtitle">CAJERO AUTOMATICO</div>
                     </div>
-
                     <!-- Pantalla de ingreso de DNI -->
                     <div id="dniScreen">
-                        <div>
+                        <div class="welcome-text">
                             Bienvenido<br>
                             Por favor ingrese su DNI
                         </div>
                         <div id="dniMessage"></div>
-                        <div>
+                        <div class="input-group">
                             <label>DNI: </label>
                             <input type="text" id="dniInput" placeholder="########" maxlength="8">
                         </div>
+                        <button class="btn btn-primary">Continuar</button>
                     </div>
+
                     <!-- Pantalla de ingreso de Contraseña -->
-                    <div id="passwordScreen">
-                        <div>Ingrese su Contraseña</div>
-                        <div></div>
-                        <div></div>
-                        <div>
+                    <div id="passwordScreen" class="hidden">
+                        <div class="welcome-text">Ingrese su Contraseña</div>
+                        <div class="user-info"></div>
+                        <div class="passwordMessage"></div>
+                        <div class="input-group">
                             <label>Contraseña:</label>
                             <input type="password" id="passwordInput" placeholder="••••" maxlength="4">
                         </div>
-                        <button>Ingresar</button>
-                        <button>Cancelar</button>
+                        <button class="btn btn-primary">Ingresar</button>
+                        <button class="btn btn-secondary">Cancelar</button>
                     </div>
+
                     <!-- Pantalla del Menu Principal -->
-                    <div id="mainMenu">
+                    <div id="mainMenu" class="hidden">
                         <div id="userWelcome"></div>
-                        <div>Seleccione una Operacion</div>
-                        <div>
-                            <button>
-                                <span>💰</span>
+                        <div class="welcome-text">Seleccione una Operacion</div>
+                        <div class="menu-options">
+                            <button class="menu-btn">
+                                <i data-lucide="banknote"></i>
                                 <span>Consultar Saldo</span>
                             </button>
-                            <button>
-                                <span>➕</span>
+                            <button class="menu-btn">
+                                <i data-lucide="banknote-arrow-up"></i>
                                 <span>Depositar Dinero</span>
                             </button>
-                            <button>
-                                <span>💵</span>
+                            <button class="menu-btn">
+                                <i data-lucide="banknote-arrow-down"></i>
                                 <span>Retirar Dinero</span>
                             </button>
-                            <button>
-                                <span>🚪</span>
+                            <button class="menu-btn">
+                                <i data-lucide="door-closed"></i>
                                 <span>Salir</span>
                             </button>
                         </div>
                     </div>
+
                     <!-- Pantalla de Consulta de Saldo -->
-                    <div id="saldoScreen">
-                        <div id="saldoUserInfo"></div>
-                        <div>Su saldo disponible es:</div>
-                        <div id="saldoDisplay"></div>
-                        <div>
+                    <div id="saldoScreen" class="hidden">
+                        <div id="saldoUserInfo" class="user-info"></div>
+                        <div class="welcome-text">Su saldo disponible es:</div>
+                        <div id="saldoDisplay" class="saldo-display"></div>
+                        <div class="info-box">
                             <small>Ultima actualizacion: Hoy</small>
                         </div>
-                        <button>Volver al Menu</button>
-                        <button>Salir</button>
+                        <button class="btn btn-primary">Volver al Menu</button>
+                        <button class="btn btn-secondary">Salir</button>
                     </div>
+
                     <!-- Pantalla de Ingresar Monto -->
-                    <div id="ingresarScreen">
-                        <div id="ingresarUserInfo"></div>
-                        <div>Ingrese el monto a depositar</div>
+                    <div id="ingresarScreen" class="hidden">
+                        <div id="ingresarUserInfo" class="user-info"></div>
+                        <div class="welcome-text">Ingrese el monto a depositar</div>
                         <div id="ingresarMessage"></div>
-                        <div>
+                        <div class="input-group">
                             <label>Monto (S/):</label>
                             <input type="number" id="montoIngresar" placeholder="0.00" min="0" step="0.01">
                         </div>
-                        <button>Confirmar Depósito</button>
-                        <button>Cancelar</button>
+                        <button class="btn btn-primary">Confirmar Depósito</button>
+                        <button class="btn btn-secondary">Cancelar</button>
                     </div>
+
                     <!-- Pantalla de Confirmación de Depósito -->
-                    <div id="confirmacionDepositoScreen">
-                        <div id="confirmDepositoUserInfo"></div>
-                        <div>
+                    <div id="confirmacionDepositoScreen" class="hidden">
+                        <div id="confirmDepositoUserInfo" class="user-info"></div>
+                        <div class="success-box">
                             <strong>✓ Depósito Exitoso</strong>
                         </div>
-                        <div>
-                            <div>Monto Depositado:</div>
-                            <div id="montoDepositado"></div>
+                        <div class="transaction-detail">
+                            <div class="label">Monto Depositado:</div>
+                            <div id="montoDepositado" class="value"></div>
                         </div>
-                        <div>
-                            <div>Nuevo Saldo:</div>
-                            <div id="nuevoSaldoDeposito" style="color: #27ae60;"></div>
+                        <div class="transaction-detail">
+                            <div class="label">Nuevo Saldo:</div>
+                            <div class="value" id="nuevoSaldoDeposito" style="color: #27ae60;"></div>
                         </div>
-                        <button>Volver al Menu</button>
-                        <button>Salir</button>
+                        <button class="btn btn-primary">Volver al Menu</button>
+                        <button class="btn btn-secondary">Salir</button>
                     </div>
+
                     <!-- Pantalla de Retirar Monto -->
-                    <div id="retirarScreen">
-                        <div id="retirarUserInfo"></div>
-                        <div>ingrese el monto a retirar</div>
+                    <div id="retirarScreen" class="hidden">
+                        <div id="retirarUserInfo" class="user-info"></div>
+                        <div class="welcome-text">ingrese el monto a retirar</div>
                         <div id="retirarMessage"></div>
-                        <div>
+                        <div class="input-group">
                             <label>Monto (S/):</label>
                             <input type="number" id="montoRetirar" placeholder="0.00" min="0" step="0.01">
                         </div>
-                        <button>Confirmar Retiro</button>
-                        <button>Cancelar</button>
+                        <button class="btn btn-primary">Confirmar Retiro</button>
+                        <button class="btn btn-secondary">Cancelar</button>
                     </div>
+
                     <!-- Pantalla de Confirmación de Retiro -->
-                    <div id="confirmacionRetiroScreen">
-                        <div id="confirmRetiroUserInfo"></div>
-                        <div>
+                    <div id="confirmacionRetiroScreen" class="hidden">
+                        <div id="confirmRetiroUserInfo" class="user-info"></div>
+                        <div class="success-box">
                             <strong>✓ Retiro Exitoso</strong>
                         </div>
-                        <div>
-                            <div>Monto Retirado:</div>
-                            <div id="montoRetirado"></div>
+                        <div class="transaction-detail">
+                            <div class="label">Monto Retirado:</div>
+                            <div class="value" id="montoRetirado"></div>
                         </div>
-                        <div>
-                            <div>Nuevo Saldo:</div>
-                            <div id="nuevoSaldoRetiro" style="color: #27ae60;"></div>
+                        <div class="transaction-detail">
+                            <div class="label">Nuevo Saldo:</div>
+                            <div class="value" id="nuevoSaldoRetiro" style="color: #27ae60;"></div>
                         </div>
-                        <div>
+                        <div class="info-box">
                             <small>Por favor retire su dinero</small>
                         </div>
-                        <button>Volver al Menu</button>
-                        <button>Salir</button>
+                        <button class="btn btn-primary">Volver al Menu</button>
+                        <button class="btn btn-secondary">Salir</button>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>
