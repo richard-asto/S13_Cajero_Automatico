@@ -113,7 +113,7 @@ function irConsultarSaldo() {
     };
     const fechaFormateada = ahora.toLocaleDateString('es-PE', opciones);
 
-    document.getElementById('fechaActualizacion').textContent = `Última actualización: ${fechaFormateada}`;
+    document.getElementById('fechaActualizacion').textContent = `${fechaFormateada}`;
 
     mostrarPantalla('saldoScreen');
 }

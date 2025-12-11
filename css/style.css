@@ -189,10 +189,10 @@ body::before {
 
 /*--Pantalla del Menu Principal--*/
 .menu-options {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 15px;
 }
 
 .menu-btn {
@@ -226,7 +226,7 @@ body::before {
 .info-box {
     background: rgba(52, 152, 219, 0.15);
     border: 2px solid rgba(52, 152, 219, 0.5);
-    padding: 20px;
+    padding: 10px;
     margin-bottom: 20px;
     border-radius: 8px;
     color: #ecf0f1;
@@ -247,7 +247,7 @@ body::before {
 .success-box {
     background: rgba(39, 174, 96, 0.15);
     border: 2px solid rgba(39, 174, 96, 0.5);
-    padding: 20px;
+    padding: 10px;
     margin-bottom: 20px;
     border-radius: 8px;
     color: #27ae60;
@@ -277,7 +277,7 @@ body::before {
 
 .transaction-detail {
     background: rgba(255, 255, 255, 0.05);
-    padding: 15px;
+    padding: 6px;
     border-radius: 6px;
     margin-bottom: 15px;
     border-left: 4px solid #3498db;
