@@ -8,17 +8,18 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
+
 <body>
     <div class="atm-machine">
-        <img src="img/bancom_logo_black_letter.png" alt="Logo Bancom" width="100px">
         <div class="screen-bezel">
             <div class="screen">
                 <div class="screen-content">
                     <div class="bank-header">
-                        <div class="bank-logo">Bancom</div>
-                        <div class="bank-subtitle">CAJERO AUTOMATICO</div>
+                        <img src="img/bancom_logo_white_letter.png" alt="Logo Bancom" width="150px">
+                        <div class="bank-subtitle">CAJERO AUTOMÁTICO</div>
                     </div>
-                    <!-- Pantalla de ingreso de DNI -->
+
+                    <!-- Pantalla de ingreso DNI -->
                     <div id="dniScreen">
                         <div class="welcome-text">
                             Bienvenido<br>
@@ -26,108 +27,108 @@
                         </div>
                         <div id="dniMessage"></div>
                         <div class="input-group">
-                            <label>DNI: </label>
+                            <label>DNI:</label>
                             <input type="text" id="dniInput" placeholder="########" maxlength="8">
                         </div>
-                        <button class="btn btn-primary">Continuar</button>
+                        <button class="btn btn-primary" onclick="verificarDNI()">Continuar</button>
                     </div>
 
-                    <!-- Pantalla de ingreso de Contraseña -->
+                    <!-- Pantalla de ingreso de contraseña -->
                     <div id="passwordScreen" class="hidden">
-                        <div class="welcome-text">Ingrese su Contraseña</div>
-                        <div class="user-info"></div>
-                        <div class="passwordMessage"></div>
+                        <div class="welcome-text">Ingrese su contraseña</div>
+                        <div class="user-info" id="dniInfo"></div>
+                        <div id="passwordMessage"></div>
                         <div class="input-group">
                             <label>Contraseña:</label>
                             <input type="password" id="passwordInput" placeholder="••••" maxlength="4">
                         </div>
-                        <button class="btn btn-primary">Ingresar</button>
-                        <button class="btn btn-secondary">Cancelar</button>
+                        <button class="btn btn-primary" onclick="verificarPassword()">Ingresar</button>
+                        <button class="btn btn-secondary" onclick="cancelarLogin()">Cancelar</button>
                     </div>
 
-                    <!-- Pantalla del Menu Principal -->
+                    <!-- Menú principal -->
                     <div id="mainMenu" class="hidden">
-                        <div id="userWelcome"></div>
-                        <div class="welcome-text">Seleccione una Operacion</div>
+                        <div class="user-info" id="userWelcome"></div>
+                        <div class="welcome-text">Seleccione una operación</div>
                         <div class="menu-options">
-                            <button class="menu-btn">
+                            <button class="menu-btn" onclick="irConsultarSaldo()">
                                 <i data-lucide="banknote"></i>
                                 <span>Consultar Saldo</span>
                             </button>
-                            <button class="menu-btn">
+                            <button class="menu-btn" onclick="irIngresarMonto()">
                                 <i data-lucide="banknote-arrow-up"></i>
                                 <span>Depositar Dinero</span>
                             </button>
-                            <button class="menu-btn">
+                            <button class="menu-btn" onclick="irRetirarMonto()">
                                 <i data-lucide="banknote-arrow-down"></i>
                                 <span>Retirar Dinero</span>
                             </button>
-                            <button class="menu-btn">
+                            <button class="menu-btn" onclick="salir()">
                                 <i data-lucide="door-closed"></i>
                                 <span>Salir</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Pantalla de Consulta de Saldo -->
+                    <!-- Pantalla de consulta de saldo -->
                     <div id="saldoScreen" class="hidden">
-                        <div id="saldoUserInfo" class="user-info"></div>
+                        <div class="user-info" id="saldoUserInfo"></div>
                         <div class="welcome-text">Su saldo disponible es:</div>
-                        <div id="saldoDisplay" class="saldo-display"></div>
+                        <div class="saldo-display" id="saldoDisplay"></div>
                         <div class="info-box">
-                            <small>Ultima actualizacion: Hoy</small>
+                            <small id="fechaActualizacion">Última actualización: Hoy</small>
                         </div>
-                        <button class="btn btn-primary">Volver al Menu</button>
-                        <button class="btn btn-secondary">Salir</button>
+                        <button class="btn btn-primary" onclick="volverMenu()">Volver al Menú</button>
+                        <button class="btn btn-secondary" onclick="salir()">Salir</button>
                     </div>
 
-                    <!-- Pantalla de Ingresar Monto -->
+                    <!-- Pantalla de ingresar monto -->
                     <div id="ingresarScreen" class="hidden">
-                        <div id="ingresarUserInfo" class="user-info"></div>
+                        <div class="user-info" id="ingresarUserInfo"></div>
                         <div class="welcome-text">Ingrese el monto a depositar</div>
                         <div id="ingresarMessage"></div>
                         <div class="input-group">
                             <label>Monto (S/):</label>
                             <input type="number" id="montoIngresar" placeholder="0.00" min="0" step="0.01">
                         </div>
-                        <button class="btn btn-primary">Confirmar Depósito</button>
-                        <button class="btn btn-secondary">Cancelar</button>
+                        <button class="btn btn-primary" onclick="confirmarDeposito()">Confirmar Depósito</button>
+                        <button class="btn btn-secondary" onclick="volverMenu()">Cancelar</button>
                     </div>
 
-                    <!-- Pantalla de Confirmación de Depósito -->
+                    <!-- Pantalla de confirmación de depósito -->
                     <div id="confirmacionDepositoScreen" class="hidden">
-                        <div id="confirmDepositoUserInfo" class="user-info"></div>
+                        <div class="user-info" id="confirmDepositoUserInfo"></div>
                         <div class="success-box">
                             <strong>✓ Depósito Exitoso</strong>
                         </div>
                         <div class="transaction-detail">
                             <div class="label">Monto Depositado:</div>
-                            <div id="montoDepositado" class="value"></div>
+                            <div class="value" id="montoDepositado"></div>
                         </div>
                         <div class="transaction-detail">
                             <div class="label">Nuevo Saldo:</div>
                             <div class="value" id="nuevoSaldoDeposito" style="color: #27ae60;"></div>
                         </div>
-                        <button class="btn btn-primary">Volver al Menu</button>
-                        <button class="btn btn-secondary">Salir</button>
+                        <button class="btn btn-primary" onclick="volverMenu()">Volver al Menú</button>
+                        <button class="btn btn-secondary" onclick="salir()">Salir</button>
                     </div>
 
-                    <!-- Pantalla de Retirar Monto -->
+                    <!-- Pantalla de retirar monto -->
                     <div id="retirarScreen" class="hidden">
-                        <div id="retirarUserInfo" class="user-info"></div>
-                        <div class="welcome-text">ingrese el monto a retirar</div>
+                        <div class="user-info" id="retirarUserInfo"></div>
+                        <div class="welcome-text">Ingrese el monto a retirar</div>
                         <div id="retirarMessage"></div>
                         <div class="input-group">
                             <label>Monto (S/):</label>
                             <input type="number" id="montoRetirar" placeholder="0.00" min="0" step="0.01">
                         </div>
-                        <button class="btn btn-primary">Confirmar Retiro</button>
-                        <button class="btn btn-secondary">Cancelar</button>
+                        <button class="btn btn-primary" onclick="confirmarRetiro()">Confirmar Retiro</button>
+                        <button class="btn btn-secondary" onclick="volverMenu()">Cancelar</button>
                     </div>
 
-                    <!-- Pantalla de Confirmación de Retiro -->
+                    <!-- Pantalla de confirmación de retiro -->
                     <div id="confirmacionRetiroScreen" class="hidden">
-                        <div id="confirmRetiroUserInfo" class="user-info"></div>
+                        <div class="user-info" id="confirmRetiroUserInfo"></div>
                         <div class="success-box">
                             <strong>✓ Retiro Exitoso</strong>
                         </div>
@@ -142,18 +143,16 @@
                         <div class="info-box">
                             <small>Por favor retire su dinero</small>
                         </div>
-                        <button class="btn btn-primary">Volver al Menu</button>
-                        <button class="btn btn-secondary">Salir</button>
+                        <button class="btn btn-primary" onclick="volverMenu()">Volver al Menú</button>
+                        <button class="btn btn-secondary" onclick="salir()">Salir</button>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        lucide.createIcons();
-    </script>
+    <script>lucide.createIcons();</script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>
